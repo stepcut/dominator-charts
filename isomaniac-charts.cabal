@@ -1,0 +1,24 @@
+name:                isomaniac-charts
+version:             0.1.0.0
+synopsis:            A chart library for the HTML5 canvas using isomaniac
+description:         Support for scatter plots and more
+homepage:            http://www.github.com/Happstack/isomaniac-charts
+license:             BSD3
+license-file:        LICENSE
+author:              Jeremy Shaw
+maintainer:          jeremy@n-heptane.com
+category:            Graphics
+build-type:          Simple
+cabal-version:       >=1.10
+
+library
+  exposed-modules:     Graphics.Isomaniac.Charts.Core
+  other-extensions:    ExtendedDefaultRules, FlexibleInstances, MultiParamTypeClasses, OverloadedStrings, QuasiQuotes, TypeFamilies, RankNTypes, ParallelListComp
+  build-depends:       base       >= 4.8 && < 4.9,
+                       containers >= 0.5 && < 0.6,
+                       ghcjs-base,
+                       isomaniac,
+                       mtl,
+                       time       >= 1.5 && < 1.6,
+                       text       >= 1.2 && < 1.3
+  default-language:    Haskell2010
