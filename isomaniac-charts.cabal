@@ -13,6 +13,7 @@ cabal-version:       >=1.10
 
 library
   exposed-modules:     Graphics.Isomaniac.Charts.Core
+                       Graphics.Isomaniac.Charts.Scatter
   other-extensions:    ExtendedDefaultRules, FlexibleInstances, MultiParamTypeClasses, OverloadedStrings, QuasiQuotes, TypeFamilies, RankNTypes, ParallelListComp
   build-depends:       base       >= 4.8 && < 4.9,
                        containers >= 0.5 && < 0.6,
