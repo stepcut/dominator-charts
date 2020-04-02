@@ -1,8 +1,8 @@
-name:                isomaniac-charts
+name:                dominator-charts
 version:             0.1.0.0
-synopsis:            A chart library for the HTML5 canvas using isomaniac
+synopsis:            A chart library for the HTML5 canvas using dominator
 description:         Support for scatter plots and more
-homepage:            http://www.github.com/Happstack/isomaniac-charts
+homepage:            http://www.github.com/Happstack/dominator-charts
 license:             BSD3
 license-file:        LICENSE
 author:              Jeremy Shaw
@@ -12,14 +12,15 @@ build-type:          Simple
 cabal-version:       >=1.10
 
 library
-  exposed-modules:     Graphics.Isomaniac.Charts.Core
-                       Graphics.Isomaniac.Charts.Scatter
+  exposed-modules:     Graphics.Dominator.Charts.Core
+                       Graphics.Dominator.Charts.Scatter
+                       Graphics.Dominator.Charts.Line
   other-extensions:    ExtendedDefaultRules, FlexibleInstances, MultiParamTypeClasses, OverloadedStrings, QuasiQuotes, TypeFamilies, RankNTypes, ParallelListComp
-  build-depends:       base       >= 4.8 && < 4.9,
-                       containers >= 0.5 && < 0.6,
+  build-depends:       base       >= 4.8 && < 5,
+                       containers >= 0.5 && < 0.7,
                        ghcjs-base,
-                       isomaniac,
+                       chili,
                        mtl,
-                       time       >= 1.5 && < 1.6,
-                       text       >= 1.2 && < 1.3
+                       time       >= 1.5,
+                       text       >= 1.2
   default-language:    Haskell2010
