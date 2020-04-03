@@ -124,13 +124,13 @@ main =
      let december = [ fromGregorian 2015 12 d | d <- [1..31]  ]
          points = [ (day, (y*10)) | day <- december | y <- [1..31]]
          points2 = [ (day, (y*8)) | day <- december | y <- [1..31]]
-         canvas w h = linePlotDay w h
+         chart w h = linePlotDay w h
                      Linear
                      Linear [ (y, WithContext2D [Font "18px Times", TextAlign AlignRight] [Draw (FillText (JSString.pack (show y)) 0 0 Nothing)]) | y <- [1, 50, 100, 500]]
                        [ LineSeries points (circleMarker red 4.0) ([StyleColor red], 3.0)
                        , LineSeries points2 (circleMarker blue 4.0) ([StyleColor blue], 2.0)
                        ]
 
-     drawCanvas sp (canvas 960 480)
+     drawCanvas sp (chart 960 480)
 
      pure ()

@@ -93,3 +93,38 @@ linePlotDay :: Double -- ^ width in pixels
 ```
 
 Instead of `[LineSeries (Double, Double)]` it takes `[LineSeries (Day, Double)]`. It automatically generates the `x-axis` labels, so you only need to provide the `y-axis` labels.
+
+This snippet shows this all put together:
+
+```
+     -- draw on the canvas
+     (Just sp) <- getElementById d "scatter-plot"
+     let december = [ fromGregorian 2015 12 d | d <- [1..31]  ]
+         points = [ (day, (y*10)) | day <- december | y <- [1..31]]
+         points2 = [ (day, (y*8)) | day <- december | y <- [1..31]]
+         chart w h = linePlotDay w h
+                     Linear
+                     Linear [ (y, WithContext2D [Font "18px Times", TextAlign AlignRight] [Draw (FillText (JSString.pack (show y)) 0 0 Nothing)]) | y <- [1, 50, 100, 500]]
+                       [ LineSeries points (circleMarker red 4.0) ([StyleColor red], 3.0)
+                       , LineSeries points2 (circleMarker blue 4.0) ([StyleColor blue], 2.0)
+                       ]
+
+     drawCanvas sp (chart 960 480)
+```
+
+In this case, I use `getElementById` to locate the `<canvas>` element -- but any method is acceptable.
+
+I think create some fake data values -- `december`, `points`, `points2`. I think call `linePlotDay` to create `chart`. And then `drawCanvas` to render that `chart`.
+
+## Building the demo
+
+The Demo.hs is not currently listed in the .cabal file. To build and run it:
+
+```
+ $ nix-shell
+ [nix-shell] $ ghcjs.exe
+ [nix-shell] $ realpath Demo.jsexe/index.html
+ /the/path/to/the/index.html
+```
+
+Copy the path to the `index.html` into your browser.
