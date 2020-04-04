@@ -4,7 +4,7 @@ module Graphics.Dominator.Charts.Scatter where
 import Control.Monad.Trans (liftIO)
 import Data.Text (Text, pack, unpack)
 import qualified Data.JSString as JSString
-import Graphics.Dominator.Charts.Core (Scale(Linear, Log), drawMarker)
+import Graphics.Dominator.Charts.Core (Scale(Linear, Log), withChartPos)
 import GHCJS.Types (JSRef(..), JSString(..))
 import Data.Time.Calendar (Day, toGregorian, fromGregorian, diffDays, showGregorian)
 import Chili.Canvas (Canvas2D(WithContext2D, Draw), Context2D(Font, Rotate, TextAlign, Translate), Draw(FillText, Stroke), Path2D(MoveTo, LineTo, Arc), TextAlign(AlignStart))
@@ -97,5 +97,5 @@ scatterPlot width' height' xScale xLabels yScale yLabels marker points =
           (concat $ concat [ map (drawYAxis width toYPos) yLabels
                            , map (drawXAxis height toXPos) xLabels
                            ])
-       ] ++ (map (drawMarker toXPos toYPos marker) points))
+       ] ++ (map (\p -> withChartPos toXPos toYPos p marker) points))
 
