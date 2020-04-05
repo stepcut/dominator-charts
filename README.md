@@ -122,7 +122,7 @@ The Demo.hs is not currently listed in the .cabal file. To build and run it:
 
 ```
  $ nix-shell
- [nix-shell] $ ghcjs.exe
+ [nix-shell] $ ghcjs Demo.hs
  [nix-shell] $ realpath Demo.jsexe/index.html
  /the/path/to/the/index.html
 ```
