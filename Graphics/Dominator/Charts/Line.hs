@@ -86,16 +86,16 @@ linePlot width' height' xScale xLabels yScale yLabels series =
         case xScale of
          Linear -> paddingLeft + (xVal * (width / xDelta))
            where xDelta = xMax - xMin
-         (Log base) -> paddingLeft + ((logBase base xVal) * (width / xDelta))
-           where xDelta = logBase base xMax
+         (Log base) -> paddingLeft + ((logBase base xVal - logBase base xMin) * (width / xDelta))
+           where xDelta = logBase base xMax - logBase base xMin
 
       -- map data point 'y' value to its pixel position in the chart
       toYPos yVal =
         case yScale of
          Linear -> (height + paddingTop) - ((yVal - yMin) * (height / yDelta))
            where yDelta = yMax - yMin
-         (Log base) -> (height + paddingTop) - ((logBase base yVal) * (height / yDelta))
-           where yDelta = logBase base yMax
+         (Log base) -> (height + paddingTop) - ((logBase base yVal - logBase base yMin) * (height / yDelta))
+           where yDelta = logBase base yMax - logBase base yMin
 
       -- draw the x-axis and labels
       drawXAxis height toXPos (x, label) =
